@@ -3,7 +3,7 @@ from src.item import Item
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 
 
-@pytest.fixture
+@pytest.fixture   # я не пойму он нуэен тут или нет
 def all_price_phone():
     '''сравнение общей цены товара в магазине'''
     item = Item("MobilePhone", 12000, 10)
