@@ -1,4 +1,7 @@
 import csv
+import os
+
+csv_items = os.path.join('Users', 'vlad', 'Desktop', 'Python', 'electronics-shop-project', 'src', 'items.csv')
 
 
 class Item:
@@ -15,7 +18,7 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        self._name = name
+        self.name = name
         self.price = price
         self.quantity = quantity
         Item.all.append(self)
@@ -34,19 +37,17 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
-        csv_items = '/Users/vlad/Desktop/Python/electronics-shop-project/src/items.csv'
+        #csv_items = '/Users/vlad/Desktop/Python/electronics-shop-project/src/items.csv'
         created_items = []
         with open(csv_items, newline='') as csvfile:
             lines = csv.DictReader(csvfile)
             for line in lines:
-                #if 'name' in line and 'price' in line and 'quantity' in line:
                 name = line['name'].strip()
                 price = float(line['price'].strip())
                 quantity = int(line['quantity'].strip())
                 item = cls(name, price, quantity)
                 created_items.append(item)
         return created_items
-        #print(len(created_items))
 
 
     @staticmethod
