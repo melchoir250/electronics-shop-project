@@ -1,7 +1,7 @@
 import csv
 import os
 
-csv_items = os.path.join('Users', 'vlad', 'Desktop', 'Python', 'electronics-shop-project', 'src', 'items.csv')
+csv_items = os.path.join('src', 'items.csv')
 
 
 class Item:
@@ -37,6 +37,8 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
+        # cls.all.clear()
+        cls.all = []
         #csv_items = '/Users/vlad/Desktop/Python/electronics-shop-project/src/items.csv'
         created_items = []
         with open(csv_items, newline='') as csvfile:
@@ -47,7 +49,7 @@ class Item:
                 quantity = int(line['quantity'].strip())
                 item = cls(name, price, quantity)
                 created_items.append(item)
-        return created_items
+        # return created_items
 
 
     @staticmethod
