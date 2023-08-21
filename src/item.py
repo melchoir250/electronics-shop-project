@@ -39,7 +39,7 @@ class Item:
         cls.all = []
 
         created_items = []
-        with open(csv_items, newline='') as csvfile:
+        with open(csv_items, newline='', encoding = 'cp1251') as csvfile:
             lines = csv.DictReader(csvfile)
             for line in lines:
                 name = line['name'].strip()
@@ -52,7 +52,7 @@ class Item:
 
     @staticmethod
     def string_to_number(value:str) -> float:
-        return float(value)
+        return int(float(value))
 
 
 
