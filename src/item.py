@@ -1,7 +1,7 @@
 import csv
 import os
 
-csv_items = os.path.join('src', 'items.csv')
+csv_items = os.path.join(os.path.dirname(__file__), 'items.csv')
 
 
 class Item:
@@ -27,10 +27,6 @@ class Item:
 
     @name.setter
     def name(self, name: str):
-        # if len(name) <= 10:
-        #     self._name = name
-        # else:
-        #     self._name = name[:10]
         self.__name = name[:10]
 
 
