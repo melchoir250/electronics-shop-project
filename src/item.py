@@ -16,11 +16,20 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        self.name = name
+        self.__name = name
         self.price = price
         self.quantity = quantity
         Item.all.append(self)
     
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
+
+    def __str__(self):
+        return f"{self.__name}"
+
+
     @property
     def name(self):
         return self.__name
@@ -45,11 +54,9 @@ class Item:
                 created_items.append(item)
 
 
-
     @staticmethod
     def string_to_number(value:str) -> float:
         return int(float(value))
-
 
 
     def calculate_total_price(self) -> float:
