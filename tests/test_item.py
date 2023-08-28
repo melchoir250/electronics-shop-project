@@ -1,5 +1,6 @@
 import pytest
 from src.item import Item
+from src.phone import Phone
 
 @pytest.fixture
 def sample_item():
@@ -28,6 +29,16 @@ def test_repr(sample_item):
 
 def test_str(sample_item):
     assert str(sample_item) == "Sample Item"
+
+def test___add__():
+    """
+    Тест на проверку правильного сложения количества товаров разных классов
+    :return:
+    """
+    phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    item1 = Item("Смартфон", 10000, 20)
+    assert item1 + phone1 == 25
+    assert phone1 + phone1 == 10
 
 
 if __name__ == '__main__':

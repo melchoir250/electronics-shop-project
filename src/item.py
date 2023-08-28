@@ -29,6 +29,30 @@ class Item:
     def __str__(self):
         return f"{self.__name}"
 
+    def __add__(self, other):
+        """
+        Pеализуйте возможность сложения экземпляров класса `Phone` и `Item` (сложение по количеству товара в магазине)
+        """
+        if not isinstance(other, Item):
+            raise ValueError("Складывать можно только объекты Item и дочерние объекты")
+        else:
+            return self.quantity + other.quantity
+
+
+    def calculate_total_price(self) -> float:
+        """
+        Рассчитывает общую стоимость конкретного товара в магазине.
+
+        :return: Общая стоимость товара.
+        """
+        return self.price * self.quantity
+
+    def apply_discount(self) -> None:
+        """
+        Применяет установленную скидку для конкретного товара.
+        """
+        self.price *= self.pay_rate
+
 
     @property
     def name(self):
@@ -37,7 +61,6 @@ class Item:
     @name.setter
     def name(self, name: str):
         self.__name = name[:10]
-
 
     @classmethod
     def instantiate_from_csv(cls):
@@ -59,16 +82,4 @@ class Item:
         return int(float(value))
 
 
-    def calculate_total_price(self) -> float:
-        """
-        Рассчитывает общую стоимость конкретного товара в магазине.
 
-        :return: Общая стоимость товара.
-        """
-        return self.price * self.quantity
-
-    def apply_discount(self) -> None:
-        """
-        Применяет установленную скидку для конкретного товара.
-        """
-        self.price *= self.pay_rate
